@@ -1,4 +1,4 @@
-# Double-SubmitCookie-
+# Double SubmitCookie Pattern
 Repository includes how to use Double Submit Cookie in an Angular & Node.Js environment.
 ## Installation
 * clone the repository to you local machine
