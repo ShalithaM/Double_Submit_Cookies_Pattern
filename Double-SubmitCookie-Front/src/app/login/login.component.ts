@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   userdetails = {username: '', password: ''}
+  auth = false
   constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit() {
@@ -23,9 +24,16 @@ export class LoginComponent implements OnInit {
           let response;
           response = res;
           console.log(res);
+
+          if (response.status == "Failed") {
+            console.log("Authentication Failed")
+            this.auth = true
+          }
+          else {
           this.cookieService.set( 'SessionID', response.sessioniD );
           this.cookieService.set( 'CSRF', response.csrftoken );
           this.router.navigate(['/profile']);
+          }
       },
       err => {
           console.log(err);
